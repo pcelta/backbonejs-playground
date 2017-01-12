@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>My Backbone JS Test</title>
+	</head>
+	<body>
+		<script type="text/javascript" src="deps/json2.js"></script>
+		<script type="text/javascript" src="deps/jquery-3.1.1.js"></script>
+  		<script type="text/javascript" src="deps/zepto.js"></script>
+  		<script type="text/javascript" src="deps/underscore.js"></script>
+  		<script type="text/javascript" src="deps/backbone.js"></script>
+
+		<script type="text/javascript">
+			var HelloView = Backbone.View.extend({
+			  el: $('body'),
+			  initialize: function() {
+			    this.render();
+			  },
+			  render: function() {
+			    $(this.el).append("<h1>Hello World</h1>");
+			  }
+			});
+
+			var helloView = new HelloView();
+		</script>
+	</body>
+</html>
