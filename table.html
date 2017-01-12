@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<title>My Backbone JS Test</title>
+		<link rel="stylesheet" type="text/css" href="deps/css/bootstrap.css">
+	</head>
+	<body>
+		<script type="text/javascript" src="deps/json2.js"></script>
+		<script type="text/javascript" src="deps/jquery-3.1.1.js"></script>
+  		<script type="text/javascript" src="deps/zepto.js"></script>
+  		<script type="text/javascript" src="deps/underscore.js"></script>
+  		<script type="text/javascript" src="deps/backbone.js"></script>
+  		<style type="text/css">
+  			#new-user {
+  				width: 300px;
+  			}
+  		</style>
+
+
+		<button type="button" class="btn btn-primary">Add New User</button>
+		<br><br>
+		<div id="new-user">
+			<form>
+				<div class="form-group">
+					<label for="firstName">First Name</label>
+					<input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+				</div>
+				<div class="form-group">
+					<label for="lastName">Last Name</label>
+					<input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+				</div>
+				<div class="form-group">
+					<label for="userName">User Name</label>
+					<input type="text" class="form-control" id="userName" name="userName" placeholder="User Name">
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+		<table class="table table-striped"> 
+			<thead> 
+				<tr> 
+					<th>#</th> 
+					<th>First Name</th> 
+					<th>Last Name</th> 
+					<th>Username</th> 
+				</tr> 
+			</thead> 
+			<tbody class="list-table"> 
+				<tr> 
+					<th scope="row">1</th> 
+					<td>Mark</td> 
+					<td>Otto</td> 
+					<td>@mdo</td> 
+				</tr> 
+				<tr> 
+					<th scope="row">2</th> 
+					<td>Jacob</td> 
+					<td>Thornton</td> 
+					<td>@fat</td> 
+				</tr> 
+			</tbody> 
+		</table>
+		<script type="text/javascript">
+			var ItemView = Backbone.View.extend({
+				el: $('.list-table'),
+				initialize: function() {
+					this.render();
+				},
+				render: function() {
+
+					html = '<tr><th scope="row">3</th> ';
+					html += '<td>'+ this.model.get("firstName")+'</td>';
+					html += '<td>'+ this.model.get("lastName")+'</td>';
+					html += '<td>'+ this.model.get("userName")+'</td></tr> ';					
+
+					$(this.el).append(html);
+				}
+			});
+
+			var UserModel = Backbone.Model.extend({
+				defaults: {
+					firstName: '',
+					lastName: '',
+					userName: ''
+				},
+				initialize: function(){
+					
+				}
+			});
+
+			var UserModelCollection = Backbone.Collection.extend({
+				model: UserModel
+			});
+
+			var user = new UserModel({firstName: "Pedrinn", lastName: "Ribeiriinnn", userName: "pceltiiinnn"});
+			var newItemView = new ItemView({model: user});
+		</script>
+	</body>
+</html>
