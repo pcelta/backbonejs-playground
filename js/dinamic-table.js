@@ -1,0 +1,1 @@
+var newUserView = new NewUserView();
